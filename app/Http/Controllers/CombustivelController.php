@@ -15,8 +15,13 @@ class CombustivelController extends Controller
     public function gasto() {
         $CalculoDeCombustivel = new CalculoDeCombustivel();
 
-        $combustivel = $CalculoDeCombustivel->combustivel();
-        $valor = $CalculoDeCombustivel->calcular();
+        $combustivel = $_GET['combustivel'];
+
+        $valorcombustivel = $_GET['valorcombustivel'];
+        $distancia = $_GET['distancia'];
+        $autonomia = $_GET['autonomia'];
+
+        $valor = $CalculoDeCombustivel->calcular($valorcombustivel,$distancia,$autonomia);
 
         return view('resultado',['combustivel'=>$combustivel,'valor'=>$valor]);
     }
